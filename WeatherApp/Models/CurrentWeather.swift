@@ -22,4 +22,21 @@ struct CurrentWeather: Codable {
     let wind_speed: Double?
     let wind_deg: Int?
     let weather: [WeatherDetail]?
+    
+    enum CodingKey: String {
+        case dt
+        case sunrise
+        case sunset
+        case temp
+        case feels_like
+        case pressure
+        case humidity
+        case dew_point
+        case uvi
+        case clouds
+        case visibility
+        case wind_speed
+        case wind_deg
+        case weather
+    }
 }

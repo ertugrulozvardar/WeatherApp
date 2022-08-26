@@ -12,4 +12,11 @@ struct FeelsLike: Codable {
     let night: Double?
     let eve: Double?
     let morn: Double?
+    
+    enum CodingKey: String {
+        case day
+        case night
+        case eve
+        case morn
+    }
 }

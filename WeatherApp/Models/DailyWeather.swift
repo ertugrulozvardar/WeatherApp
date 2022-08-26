@@ -28,4 +28,25 @@ struct DailyWeather: Codable {
     let rain: Double?
     let uvi: Double?
     
+    enum CodingKey: String {
+        case dt
+        case sunrise
+        case sunset
+        case moonrise
+        case moonset
+        case moon_phase
+        case temp
+        case feels_like
+        case pressure
+        case humidity
+        case dew_point
+        case wind_speed
+        case wind_deg
+        case wind_gust
+        case weather
+        case clouds
+        case pop
+        case rain
+        case uvi
+    }
 }
