@@ -22,6 +22,7 @@
 		4F5618E028B9104900EFD451 /* WeatherDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5618DF28B9104900EFD451 /* WeatherDetail.swift */; };
 		4F5618E228B9115F00EFD451 /* Temperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5618E128B9115F00EFD451 /* Temperature.swift */; };
 		4F5618E428B911FC00EFD451 /* FeelsLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5618E328B911FC00EFD451 /* FeelsLike.swift */; };
+		4F5618E628B915B900EFD451 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5618E528B915B900EFD451 /* Network.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		4F5618DF28B9104900EFD451 /* WeatherDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetail.swift; sourceTree = "<group>"; };
 		4F5618E128B9115F00EFD451 /* Temperature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Temperature.swift; sourceTree = "<group>"; };
 		4F5618E328B911FC00EFD451 /* FeelsLike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelsLike.swift; sourceTree = "<group>"; };
+		4F5618E528B915B900EFD451 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +175,7 @@
 		4F5618D828B9053D00EFD451 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				4F5618E528B915B900EFD451 /* Network.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F5618E628B915B900EFD451 /* Network.swift in Sources */,
 				4F5618DA28B90EF000EFD451 /* Weather.swift in Sources */,
 				4F5618DC28B90F4600EFD451 /* CurrentWeather.swift in Sources */,
 				4F5618E428B911FC00EFD451 /* FeelsLike.swift in Sources */,
