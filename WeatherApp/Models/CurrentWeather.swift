@@ -21,6 +21,7 @@ struct CurrentWeather: Codable {
     let visibility: Int?
     let wind_speed: Double?
     let wind_deg: Int?
+    let wind_gust: Double?
     let weather: [WeatherDetail]?
     
     enum CodingKey: String {
@@ -37,6 +38,7 @@ struct CurrentWeather: Codable {
         case visibility
         case wind_speed
         case wind_deg
+        case wind_gust
         case weather
     }
 }

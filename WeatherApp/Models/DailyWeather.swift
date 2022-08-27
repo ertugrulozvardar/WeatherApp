@@ -11,8 +11,8 @@ struct DailyWeather: Codable {
     let dt: Int?
     let sunrise: Int?
     let sunset: Int?
-    let moonrise: Int?
-    let moonset: Int?
+    let moonrise: Date?
+    let moonset: Date?
     let moon_phase: Double?
     let temp: Temperature?
     let feels_like: FeelsLike?
@@ -22,10 +22,9 @@ struct DailyWeather: Codable {
     let wind_speed: Double?
     let wind_deg: Int?
     let wind_gust: Double?
-    let weather: WeatherDetail?
+    let weather: [WeatherDetail]?
     let clouds: Int?
     let pop: Double?
-    let rain: Double?
     let uvi: Double?
     
     enum CodingKey: String {
@@ -46,7 +45,10 @@ struct DailyWeather: Codable {
         case weather
         case clouds
         case pop
-        case rain
         case uvi
+    }
+    
+    public func getDate() -> Date {
+        return Date(timeIntervalSince1970: TimeInterval(dt ?? 0))
     }
 }

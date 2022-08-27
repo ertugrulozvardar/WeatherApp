@@ -12,12 +12,8 @@ class WeatherViewModel {
     
     var dailyWeatherData: [DailyWeather] = [DailyWeather]()
     var weatherService = WeatherService()
-    var lat: Double?
-    var lon: Double?
     var reloadTableView: (()->())?
     var showError: (()->())?
-    var showLoading: (()->())?
-    var hideLoading: (()->())?
     
     private var cellViewModels: [WeatherConditionTableCellViewModel] = [WeatherConditionTableCellViewModel]() {
         didSet {
@@ -25,21 +21,17 @@ class WeatherViewModel {
         }
     }
     
-    func getWeatherData(){
-        showLoading?()
-        if let latitudeValue = lat, let longitudeValue = lon {
-            weatherService.getWeather(latitude: latitudeValue, longitude: longitudeValue) { result in
-                self.hideLoading?()
+    func getWeatherData(latitudeValue: Double, longitudeValue: Double){
+        weatherService.getWeather(latitude: latitudeValue, longitude: longitudeValue) { result in
                 switch result {
                 case .success(let response):
                     self.createCell(dailyWeatherData: response.daily!)
                     self.reloadTableView?()
-                case .failure(_):
+                case .failure(let error):
+                    print(error)
                     self.showError?()
                 }
             }
-
-        }
     }
     
     var numberOfCells: Int {

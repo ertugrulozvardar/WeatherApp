@@ -552,6 +552,9 @@
 				DEVELOPMENT_TEAM = YMF2VLKUTZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WeatherApp/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "WeatherApp wants to use your location";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "WeatherApp wants to use your location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "WeatherApp wants to use your location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -580,6 +583,9 @@
 				DEVELOPMENT_TEAM = YMF2VLKUTZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WeatherApp/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "WeatherApp wants to use your location";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "WeatherApp wants to use your location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "WeatherApp wants to use your location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

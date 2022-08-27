@@ -6,38 +6,45 @@
 //
 
 import UIKit
+import CoreLocation
 
 class WeatherConditionViewController: UIViewController {
 
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var weatherDegreeLabel: UILabel!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var weatherForecastTableView: UITableView!
+    @IBOutlet weak var weatherForecastTableView: UITableView! {
+        didSet {
+            weatherForecastTableView.register(UINib(nibName: String(describing: WeatherConditionTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: WeatherConditionTableViewCell.self))
+        }
+    }
     
-    
+    var locationManager = CLLocationManager()
     var weatherViewModel = WeatherViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        initializeLocationManager()
+        initializeViewModel()
     }
     
-    func initalizeViewModel(){
+    func initializeLocationManager() {
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
+        locationManager.requestAlwaysAuthorization()
+        locationManager.startUpdatingLocation()
+        locationManager.allowsBackgroundLocationUpdates = true
+    }
+    
+    func initializeViewModel(){
         weatherViewModel.reloadTableView = {
                 DispatchQueue.main.async { self.weatherForecastTableView.reloadData() }
             }
         weatherViewModel.showError = {
                 DispatchQueue.main.async { print("Something went wrong while getting the weather data..") }
             }
-        weatherViewModel.showLoading = {
-                DispatchQueue.main.async { self.activityIndicator.startAnimating() }
-            }
-        weatherViewModel.hideLoading = {
-                DispatchQueue.main.async { self.activityIndicator.stopAnimating() }
-            }
-        weatherViewModel.getWeatherData()
-        }
+    }
 }
 
 //MARK: TableView DataSource Related Methods
@@ -56,5 +63,19 @@ extension WeatherConditionViewController: UITableViewDataSource {
         cell.maxTemperatureLabel.text = cellVM.maxTemperatureText
         cell.minTemperatureLabel.text = cellVM.minTemperatureText
         return cell
+    }
+}
+
+extension WeatherConditionViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            let lat = location.coordinate.latitude
+            let lon = location.coordinate.longitude
+            weatherViewModel.getWeatherData(latitudeValue: lat, longitudeValue: lon)
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error)
     }
 }

@@ -70,10 +70,6 @@
                                 <rect key="frame" x="0.0" y="353" width="414" height="509"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" id="Wle-OI-lK8">
-                                <rect key="frame" x="0.0" y="426" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="RcF-CI-Hga">
                                 <rect key="frame" x="145" y="144" width="124" height="189"/>
                                 <subviews>
@@ -121,7 +117,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="activityIndicator" destination="Wle-OI-lK8" id="3xX-qN-oXM"/>
                         <outlet property="cityNameLabel" destination="cas-SC-oCl" id="jgh-9t-m6u"/>
                         <outlet property="weatherDegreeLabel" destination="DPm-tV-j4b" id="yI1-lm-gq5"/>
                         <outlet property="weatherForecastTableView" destination="hC0-2K-035" id="zFI-Ev-vCa"/>

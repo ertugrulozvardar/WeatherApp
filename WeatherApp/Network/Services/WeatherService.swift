@@ -37,8 +37,10 @@ struct WeatherService: WeatherServiceProtocol {
                 URLQueryItem(name: "appid", value: weatherAPIKey)]
             return components.url
         }
-        let urlRequest = URLRequest(url: url!)
-        network.performRequest(request: urlRequest, completion: completion)
+        if let finalURL = url {
+            let urlRequest = URLRequest(url: finalURL)
+            network.performRequest(request: urlRequest, completion: completion)
+        }
     }
     
 }
