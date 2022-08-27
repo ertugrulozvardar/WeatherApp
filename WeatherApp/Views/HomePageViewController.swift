@@ -19,7 +19,7 @@ class HomePageViewController: UIViewController {
 
     @IBAction func enterButtonPressed(_ sender: UIButton) {
         if let weatherConditionVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: WeatherConditionViewController.self)) as? WeatherConditionViewController {
-            self.present(weatherConditionVC, animated: true, completion: nil)
+            self.navigationController?.pushViewController(weatherConditionVC, animated: true)
         }
     }
 }
