@@ -116,6 +116,12 @@
                             <constraint firstItem="hC0-2K-035" firstAttribute="leading" secondItem="vNo-Tm-pcR" secondAttribute="leading" id="ziK-YE-LhV"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="WeatherForecastTableView" destination="hC0-2K-035" id="qZR-yK-gQP"/>
+                        <outlet property="cityNameLabel" destination="cas-SC-oCl" id="jgh-9t-m6u"/>
+                        <outlet property="weatherDegreeLabel" destination="DPm-tV-j4b" id="yI1-lm-gq5"/>
+                        <outlet property="weatherIcon" destination="JHS-Kd-ru3" id="WlR-OY-Yek"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KaM-DC-lPm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

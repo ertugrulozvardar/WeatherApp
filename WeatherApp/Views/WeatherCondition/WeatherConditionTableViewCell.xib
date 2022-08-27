@@ -70,6 +70,12 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="dayLabel" destination="cKu-N3-ueS" id="6Qt-hx-BtM"/>
+                <outlet property="maxTemperatureLabel" destination="O3e-Mn-fsg" id="UUt-pP-qcE"/>
+                <outlet property="minTemperatureLabel" destination="Ulq-ZP-dWv" id="R7o-jX-TYm"/>
+                <outlet property="weatherIcon" destination="vQ7-vK-Uph" id="FjR-g6-ZEo"/>
+            </connections>
             <point key="canvasLocation" x="-310.14492753623193" y="109.15178571428571"/>
         </tableViewCell>
     </objects>
