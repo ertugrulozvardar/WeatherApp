@@ -11,7 +11,6 @@ struct Network {
     private let urlSession = URLSession.shared
     
     func performRequest<T: Codable>(request: URLRequest, completion: @escaping (Result<T, NetworkError>) -> Void) {
-        DispatchQueue.global().async {
             let task = urlSession.dataTask(with: request) { data, response, error in
                 DispatchQueue.main.async {
                     if let data = data {
@@ -29,7 +28,6 @@ struct Network {
                 }
             }
             task.resume()
-        }
     }
 }
 

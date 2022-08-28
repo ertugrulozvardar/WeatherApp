@@ -15,6 +15,7 @@ class WeatherConditionViewController: UIViewController {
     @IBOutlet weak var weatherDegreeLabel: UILabel!
     @IBOutlet weak var weatherForecastTableView: UITableView! {
         didSet {
+            weatherForecastTableView.dataSource = self
             weatherForecastTableView.register(UINib(nibName: String(describing: WeatherConditionTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: WeatherConditionTableViewCell.self))
         }
     }
@@ -32,18 +33,19 @@ class WeatherConditionViewController: UIViewController {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
-        locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
         locationManager.allowsBackgroundLocationUpdates = true
     }
     
     func initializeViewModel(){
-        weatherViewModel.reloadTableView = {
-                DispatchQueue.main.async { self.weatherForecastTableView.reloadData() }
-            }
+        weatherViewModel.reloadTableView = { [weak self] in
+                self?.weatherForecastTableView.reloadData()
+        }
         weatherViewModel.showError = {
-                DispatchQueue.main.async { print("Something went wrong while getting the weather data..") }
+            DispatchQueue.main.async { 
+                print("Something went wrong while getting the weather data..")
             }
+        }
     }
 }
 

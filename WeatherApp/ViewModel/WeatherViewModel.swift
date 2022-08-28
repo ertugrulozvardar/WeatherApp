@@ -22,11 +22,11 @@ class WeatherViewModel {
     }
     
     func getWeatherData(latitudeValue: Double, longitudeValue: Double){
-        weatherService.getWeather(latitude: latitudeValue, longitude: longitudeValue) { result in
+          weatherService.getWeather(latitude: latitudeValue, longitude: longitudeValue) { result in
                 switch result {
                 case .success(let response):
                     self.createCell(dailyWeatherData: response.daily!)
-                    self.reloadTableView?()
+                    //self.reloadTableView?()
                 case .failure(let error):
                     print(error)
                     self.showError?()
