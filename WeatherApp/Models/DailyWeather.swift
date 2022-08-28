@@ -27,6 +27,7 @@ struct DailyWeather: Codable {
     let pop: Double?
     let uvi: Double?
     
+    
     enum CodingKey: String {
         case dt
         case sunrise
@@ -48,7 +49,13 @@ struct DailyWeather: Codable {
         case uvi
     }
     
-    public func getDate() -> Date {
-        return Date(timeIntervalSince1970: TimeInterval(dt ?? 0))
+    var date: NSDate? {
+        return NSDate(timeIntervalSince1970: Double(dt ?? 0))
+    }
+    
+    func stringFromDate(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd MMM yyyy HH:mm" //yyyy
+        return formatter.string(from: date)
     }
 }

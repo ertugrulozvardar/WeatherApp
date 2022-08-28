@@ -21,12 +21,15 @@ class WeatherConditionViewController: UIViewController {
     }
     
     var locationManager = CLLocationManager()
+    var geocoder = CLGeocoder()
+    var currentWeatherViewModel = CurrentWeatherViewModel()
     var weatherViewModel = WeatherViewModel()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeLocationManager()
-        initializeViewModel()
+        initalizeCurrentWeatherViewModel()
+        initializeWeatherViewModel()
     }
     
     func initializeLocationManager() {
@@ -37,7 +40,7 @@ class WeatherConditionViewController: UIViewController {
         locationManager.allowsBackgroundLocationUpdates = true
     }
     
-    func initializeViewModel(){
+    func initializeWeatherViewModel(){
         weatherViewModel.reloadTableView = { [weak self] in
                 self?.weatherForecastTableView.reloadData()
         }
@@ -46,6 +49,12 @@ class WeatherConditionViewController: UIViewController {
                 print("Something went wrong while getting the weather data..")
             }
         }
+    }
+    
+    func initalizeCurrentWeatherViewModel() {
+        let currentViewModel = currentWeatherViewModel.getCurrentWeatherViewModel()
+        //weatherIcon.text
+        weatherDegreeLabel.text = currentViewModel.temperatureText
     }
 }
 
@@ -73,7 +82,21 @@ extension WeatherConditionViewController: CLLocationManagerDelegate {
         if let location = locations.last {
             let lat = location.coordinate.latitude
             let lon = location.coordinate.longitude
+            currentWeatherViewModel.getWeatherData(latitudeValue: lat, longitudeValue: lon)
             weatherViewModel.getWeatherData(latitudeValue: lat, longitudeValue: lon)
+            geocoder.reverseGeocodeLocation(location) { placemarks, error in
+                if let error = error {
+                    debugPrint(error.localizedDescription)
+                }
+                if let placemarks = placemarks {
+                    if placemarks.count > 0 {
+                        let placemark = placemarks[0]
+                        if let city = placemark.locality {
+                            self.cityNameLabel.text = city
+                        }
+                    }
+                }
+            }
         }
     }
     

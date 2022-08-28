@@ -46,7 +46,7 @@ class WeatherViewModel {
         self.dailyWeatherData = dailyWeatherData
         var vms = [WeatherConditionTableCellViewModel]()
         for weatherData in dailyWeatherData {
-            vms.append(WeatherConditionTableCellViewModel(dayText: String(weatherData.dt!), maxTemperatureText: String(weatherData.temp!.max!), minTemperatureText: String(weatherData.temp!.min!)))
+            vms.append(WeatherConditionTableCellViewModel(dayText: String(weatherData.stringFromDate(weatherData.date! as Date)), maxTemperatureText: String(weatherData.temp!.max!), minTemperatureText: String(weatherData.temp!.min!)))
         }
         cellViewModels = vms
     }
